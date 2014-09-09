@@ -1,0 +1,15 @@
+kali_front_user:
+    resource: "@KaliFrontUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+kali_front_command:
+    resource: "@KaliFrontCommandBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+kali_front_site:
+    resource: "@KaliFrontSiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

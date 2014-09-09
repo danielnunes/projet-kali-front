@@ -1,0 +1,88 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<!-- Start Slider Wrapping -->
+    <div id="sliderwrap">
+		
+        <!-- Start Slider -->
+        <div id="slider" class="nivoSlider">
+            <img src="{{asset("images/slider-banners/slider01.jpg")}}" alt=""/>
+            <img src="{{asset("images/slider-banners/slider02.jpg")}}" alt=""/>
+            <img src="{{asset("images/slider-banners/slider03.jpg")}}" alt=""/>
+        </div>
+        <!-- End Slider -->
+        <!-- Start Slider HTML Captions -->
+        <div id="htmlcaption" class="nivo-html-caption">
+            <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+        </div>
+        <!-- End Slider HTML Captions -->
+    
+    </div>
+    <!-- End Slider Wrapping -->
+    <!-- Start H1 Title -->
+    <div class="titles">
+    
+    	<h1>Welcome to the response- Premium HTML Responsive theme</h1>
+        
+        <span></span>
+    
+    </div>
+    <!-- End H1 Title -->
+    <!-- Start Main Body Wrap -->
+    <div id="main-wrap">
+    
+    	<!-- Start Featured Boxes -->
+        <div class="boxes-third boxes-first">
+        
+        	<div class="boxes-padding">
+            
+            	<div class="bti">
+                	<div class="featured-images"><img src="images/responsive-icon.png" width="72" height="53" alt="Responsive"></div>
+                	<div class="featured-titles">Responsive Html</div>
+                </div>
+                <div class="featured-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non ipsum nunc, nec sagittis tellus.</div>
+            
+            </div>
+            
+            <span class="box-arrow"></span>
+        
+        </div>
+        
+        <div class="boxes-third">
+        
+        	<div class="boxes-padding">
+            
+            	<div class="bti">
+                    <div class="featured-images"><img src="images/cleansleek-icon.png" width="66" height="53" alt="Responsive"></div>
+                    <div class="featured-titles">clean & sleek</div>
+                </div>
+                <div class="featured-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non ipsum nunc, nec sagittis tellus.</div>
+            
+            </div>
+            
+            <span class="box-arrow"></span>
+        
+        </div>
+        
+        <div class="boxes-third boxes-last">
+        
+        	<div class="boxes-padding">
+            	
+                <div class="bti">
+                    <div class="featured-images"><img src="images/google-icon.png" width="54" height="53" alt="Responsive"></div>
+                    <div class="featured-titles">cross browser</div>
+                </div>
+                <div class="featured-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non ipsum nunc, nec sagittis tellus.</div>
+            
+            </div>
+            
+            <span class="box-arrow"></span>
+        
+        </div>
+        <!-- End Featured Boxes -->
+        
+    </div>
+    <!-- End Main Body Wrap -->
+{% endblock %}
