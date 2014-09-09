@@ -1,0 +1,5 @@
+googlemap:
+    resource: "@GooglemapBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

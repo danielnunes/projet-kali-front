@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new Kali\Front\SiteBundle\KaliFrontSiteBundle(),
             new Kali\Front\CommandBundle\KaliFrontCommandBundle(),
             new Kali\Front\UserBundle\KaliFrontUserBundle(),
+            new Kali\Front\GooglemapBundle\GooglemapBundle(),
+            new AntiMattr\GoogleBundle\GoogleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
