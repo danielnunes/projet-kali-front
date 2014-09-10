@@ -5,6 +5,8 @@ namespace Kali\Front\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Kali\Back\UserBundle\Entity\User;
+use Buzz\Browser;
 
 class ClientController extends Controller {
 
@@ -13,8 +15,38 @@ class ClientController extends Controller {
      * @Template()
      */
     public function signInAction() {
-        return array(
-        );
+        /* @var $userManager UserManager */
+        $em = $this->getDoctrine()->getManager();
+        
+        $roles = array_keys($this->container->getParameter('security.role_hierarchy.roles'));
+        $user = new User();
+        /* Création du formulaire */
+        $form = $this->createForm(new UserFormType($roles), $user);
+
+        /* Récupération de la requête */
+        $request = $this->get('request');
+
+        if ($request->getMethod() == 'POST') {
+            $form->submit($request);
+            if ($form->isValid()) {
+                $user->setUsername($form->get("email")->getData());
+                $user->setPlainPassword($form->get("plainPassword")->getData());
+                $user->setEnabled(true);
+                $user_json = json_encode($user);
+                
+                $browser = new Browser();
+                $response = $browser->get($this->container->getParameter('back_site').'create-user/user='.$user_json); 
+                $response->getContent();
+                $response = json_decode($response);
+                
+
+                // On définit un message flash
+                $this->get('session')->getFlashBag()->add('notice', 'Utilisateur créé avec succès');
+
+                return $this->redirect($this->generateUrl('user.list'));
+            }
+        }
+        return array('form' => $form->createView());
     }
 
     /**
