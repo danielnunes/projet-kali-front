@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <div class="login_account">
+        <div class="wrap">
+            <h4 class="title">Se connecter</h4>
+            <form>
+                <div class="col_1_of_2 span_1_of_2">
+                    <div><input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                this.value = 'E-Mail';
+                            }"></div>
+                    <div><input type="text" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                this.value = 'password';
+                            }"></div>
+                    <button class="grey">Submit</button>
+                </div>
+
+                </div>
+
+                <div class="clear"></div>
+            </form>
+        </div> 
+    </div>
+    {% endblock %}
