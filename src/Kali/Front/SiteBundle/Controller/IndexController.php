@@ -16,7 +16,7 @@ class IndexController extends Controller
     public function indexAction()
     {
         $browser = new Browser();
-        $response = $browser->get($this->container->getParameter("back_site") . 'api/sliders');
+        $response = $browser->get($this->container->getParameter("back_site") . 'sliders');
         $sliders = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
         return array(
             'sliders' => $sliders,

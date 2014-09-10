@@ -17,11 +17,12 @@ class ProductController extends Controller
      */
     public function popularAction()
     {
-        $products = array(); //recuperation des produits
-        
-        
+        $browser = new Browser();
+        $response = $browser->get($this->container->getParameter("back_site") . 'feature/products');
+        $products = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
         return array(
             'products' => $products,
+            'site' => $this->container->getParameter("back_site"),
         );
     }
     

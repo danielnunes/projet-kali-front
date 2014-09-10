@@ -15,4 +15,4 @@ parameters:
     debug_toolbar: true
     debug_redirects: false
     use_assetic_controller: true
-    back_site : http://back.kali.dev/
+    back_site : http://back.kali.dev/api/
