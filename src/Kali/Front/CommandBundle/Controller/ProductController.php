@@ -12,10 +12,39 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ProductController extends Controller
 {
     /**
-     * @Route("/populaire", name="produit_popular")
+     * @Route("/populaire", name="product_popular")
      * @Template()
      */
     public function popularAction()
+    {
+        $products = array(); //recuperation des produits
+        
+        
+        return array(
+            'products' => $products,
+        );
+    }
+    
+    
+    /**
+     * @Route("/categorie/{id}", name="product_category")
+     * @Template()
+     */
+    public function categoryAction()
+    {
+        $products = array(); //recuperation des produits
+        
+        
+        return array(
+            'products' => $products,
+        );
+    }
+    
+    /**
+     * @Route("/produit/{id}", name="produit_plug")
+     * @Template()
+     */
+    public function plugAction()
     {
         $products = array(); //recuperation des produits
         
