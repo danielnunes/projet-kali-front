@@ -2,9 +2,10 @@
 
 namespace Kali\Front\CommandBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Buzz\Browser;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/produit")
@@ -18,7 +19,7 @@ class ProductController extends Controller
     public function popularAction()
     {
         $browser = new Browser();
-        $response = $browser->get($this->container->getParameter("back_site") . 'feature/products');
+        $response = $browser->get($this->container->getParameter("back_site") . 'api/feature/products');
         $products = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
         return array(
             'products' => $products,
@@ -50,7 +51,7 @@ class ProductController extends Controller
     }
     
     /**
-     * @Route("/produit/{id}", name="produit_plug")
+     * @Route("/produit/{id}", name="product_plug")
      * @Template()
      */
     public function plugAction()
