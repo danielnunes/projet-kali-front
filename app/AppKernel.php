@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new Kali\Front\CommandBundle\KaliFrontCommandBundle(),
             new Kali\Front\UserBundle\KaliFrontUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
