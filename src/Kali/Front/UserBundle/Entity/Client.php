@@ -106,6 +106,23 @@ class Client
      * @ORM\OneToMany(targetEntity="Kali\Back\ProductBundle\Entity\Command", mappedBy="user")
      */
     private $commands;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="email", type="string", nullable = true)
+     */
+    private $email;
+    
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="password", type="string", nullable = true)
+     */
+    private $password;
+    
+    
 
 
     /**
@@ -434,4 +451,22 @@ class Client
     {
         return $this->user;
     }
+    
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+
 }
