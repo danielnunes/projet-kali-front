@@ -1,0 +1,6 @@
+<ul class="megamenu skyblue">
+    <li><a class="color1" href="{{path("index_index")}}">Accueil</a></li>
+        {% for category in categories %}
+            <li><a class="color1" href="{{path("product_category", {id:category['id']})}}">{{category['name']}}</a></li>
+        {% endfor %}
+</ul>
