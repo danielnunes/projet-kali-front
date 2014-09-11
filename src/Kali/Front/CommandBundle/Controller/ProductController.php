@@ -36,17 +36,11 @@ class ProductController extends Controller
     {
         $browser = new Browser();
         $response = $browser->get($this->container->getParameter("back_site") . 'feature/categorie');
-        $categories = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
-        
-        return array(
-            'categories' => $categories,
-            'site' => $this->container->getParameter("back_site"),
-        );
-        $products = array(); //recuperation des produits
-        
-        
+        $products = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
+         
         return array(
             'products' => $products,
+            'site' => $this->container->getParameter("back_site"),
         );
     }
     
@@ -54,13 +48,16 @@ class ProductController extends Controller
      * @Route("/produit/{id}", name="product_plug")
      * @Template()
      */
-    public function plugAction()
+    public function plugAction($id)
     {
-        $products = array(); //recuperation des produits
-        
-        
+        $browser = new Browser();
+        $response = $browser->get($this->container->getParameter("back_site") . 'api/products/' . $id);
+        $product = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\CommandBundle\Entity\Product', 'json');
+
         return array(
-            'products' => $products,
+            'product' => $product,
+            'site' => $this->container->getParameter("back_site"),
+            'caracteristics' => $product->getCaracteristics(),
         );
     }
 

@@ -1,153 +1,212 @@
 {% extends "::layout.html.twig" %}
-
-{% block title %}Produits les plus vendus{% endblock %}
-
+{% block stylesheet %}
+    <link href="{{asset("css/style.css")}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset("css/form.css")}}" rel="stylesheet" type="text/css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="{{asset("css/megamenu.css")}}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset("css/etalage.css")}}">   
+{% endblock %}
+{% block title %}Caracteristique de {{product.name}}{% endblock %}
 {% block body %}
-    <!-- Start H1 Title -->
-    <div class="titlesnormal">
+    <div class="single">
+        <div class="wrap">
+            <div class="cont span_2_of_3">
+                <div class="labout span_1_of_a1">
+                    <!-- start product_slider -->
+                    <ul id="etalage">
+                        {%for picture in product.pictures %}
+                            <li>
+                                <a href="optionallink.html">
+                                    <img class="etalage_thumb_image" src="{{site}}{{picture.path}}" />
+                                    <img class="etalage_source_image" src="{{site}}{{picture.path}}" />
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
 
-        <h1>Produits les plus populaires</h1>
 
-        <span></span>
-
-    </div>
-    <!-- End H1 Title -->
-    <!-- Start Main Body Wrap -->
-    <div id="main-wrap">
-        {% for product in products %}
-            <!-- Start Left Section -->
-            <div class="leftsection leftsectionalt">
-
-                <!-- Start Blog Post -->
-                <div class="blogwrapstart">
-
-                    <div class="blogtitle"><h3><a href="" title="5 ways to get top of google">{{product.name}}</a></h3></div>
-
-                    <div class="blogbody">
-                        <!-- Start Blog Image -->
-                        <div class="blogimage"><a href="blog-post.html"><img src="" alt="{{product.name}}"></a></div>
-                        <!-- End Blog Text -->
-                        <!-- Start Blog Information -->
-                        <div class="bloginfo">
-
-                            <p class="settingsicon">Prix: <span>{{product.price}}</span></p>
-                            <p class="tagicon">Quantité restante: <span>{{product.stock}}</span></p>
-
-                        </div>
-                        <!-- End Blog Information -->
-                        <!-- Start Blog Text -->
-                        <div class="blogtext">
-
-                            <p>Lorem ipsum dolor sit amet, consectetur elit. Maecenas non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.Lorem ipsum dolor sit amet, consectetur elit. Maecenas 
-                                non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur elit. Maecenas non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.Lorem ipsum dolor sit amet, consectetur elit. Maecenas 
-                                non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus. Lorem ipsum dolor sit amet, consectetur elit. Maecenas non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.Lorem ipsum dolor sit amet, consectetur elit. Maecenas 
-                                non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.</p>
-
-                        </div>
-                        <!-- End Blog Text -->
-                    </div>
-
-                    <span class="box-arrow"></span>
-
+                    <!-- end product_slider -->
                 </div>
+                <div class="cont1 span_2_of_a1">
+                    <h3 class="m_3">{{product.name}}</h3>
 
-            </div>
-
-        {% endfor %}
-
-        <!-- End Left Section -->
-
-        <!-- Start Right Section -->
-        <div class="rightsection rightsectionalt">
-
-            <!-- Start Blog Widget -->
-            <div class="blogwidgetstart">
-                <!-- Start Advertising Widget -->
-                <div class="widgettitle"><h4>Advertising</h4></div>
-
-                <div class="widgetbody">
-
-                    <div class="blogadvertising">
-
-                        <a href="#"><img src="images/advertising/themeadvertising.jpg"  alt="Themeforest"></a>
-                        <a href="#"><img src="images/advertising/audioadvertising.jpg" alt="Audiojungle"></a>
-                        <a href="#"><img src="images/advertising/graphicadvertising.jpg" alt="Grahpicrive"></a>
-                        <a href="#"><img src="images/advertising/tutorialadvertising.jpg" alt="Tutsplus"></a>
-
+                    <div class="price_single">
+                        <span class="actual">{{product.price}}€</span>
                     </div>
-
-                </div>
-                <!-- End Advertising Widget -->
-                <span class="box-arrow"></span>
-
-            </div>
-            <!-- End Blog Widget -->
-
-            <!-- Start Blog Widget -->
-            <div class="blogwidget">
-                <!-- Start Categories Widget -->
-                <div class="widgettitle"><h4>Blog Categories</h4></div>
-
-                <div class="widgetbody">
-
-                    <div class="blogcategories">
-
-                        <ul>
-                            <li><a href="#" title="All Blogs">All Blogs</a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>                            
-                        </ul>
-
+                    <ul class="options">
+                        <h4 class="m_9">Dimension</h4>
+                        <li><a href="#">{{product.lenght}}cm</a></li>
+                        <li><a href="#">{{product.density}}cm</a></li>
+                        <li><a href="#">{{product.width}}cm</a></li>
+                        <li><a href="#">{{product.weight}}kg</a></li>
+                        <div class="clear"></div>
+                    </ul>
+                    <div class="btn_form">
+                        <form>
+                            <input type="submit" value="Acheter" title="">
+                        </form>
                     </div>
-
+                    <p class="m_desc">{{product.description}}</p>
                 </div>
-                <!-- End Categories Widget -->
-                <span class="box-arrow"></span>
-
+                <div class="clear"></div>
+                <div class="toogle">
+                    <h3 class="m_3">Caractéristique</h3>
+                    <p>
+                        {% for caracteristic in caracteristics %}
+                            {{caracteristic.name}}<br />
+                        {% endfor %}
+                    </p>
+                </div>	
             </div>
-            <!-- End Blog Widget -->
-
-            <!-- Start Blog Widget -->
-            <div class="blogwidget">
-                <!-- Start Categories Widget -->
-                <div class="widgettitle"><h4>Top 5 Blog Posts</h4></div>
-
-                <div class="widgetbody">
-
-                    <div class="blogcategories">
-
-                        <ul>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum nunc</a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor </a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum nunc</a></li>                        
-                        </ul>
-
-                    </div>
-
-                </div>
-                <!-- End Categories Widget -->
-                <span class="box-arrow"></span>
-
-            </div>
-            <!-- End Blog Widget -->
-
+            <div class="clear"></div>
         </div>
-        <!-- End Right Section -->
-
     </div>
-    <!-- End Main Body Wrap -->
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+    {% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="{{asset("js/jquery.min.js")}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+            });
+
+            $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function() {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+    </script>
+    <!-- start menu -->     
+    <script type="text/javascript" src="{{asset("js/megamenu.js")}}"></script>
+    <script>$(document).ready(function() {
+            $(".megamenu").megamenu();
+        });</script>
+    <!-- end menu -->
+    <script type="text/javascript" src="{{asset("js/jquery.jscrollpane.min.js")}}"></script>
+    <script type="text/javascript" id="sourcecode">
+        $(function()
+        {
+            $('.scroll-pane').jScrollPane();
+        });
+    </script>
+    <!----details-product-slider--->
+    <!-- Include the Etalage files -->
+    <script src="{{asset("js/jquery.etalage.min.js")}}"></script>
+    <!-- Include the Etalage files -->
+    <script>
+        jQuery(document).ready(function($) {
+
+            $('#etalage').etalage({
+                thumb_image_width: 300,
+                thumb_image_height: 400,
+                show_hint: true,
+                click_callback: function(image_anchor, instance_id) {
+                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                }
+            });
+            // This is for the dropdown list example:
+            $('.dropdownlist').change(function() {
+                etalage_show($(this).find('option:selected').attr('class'));
+            });
+
+        });
+    </script>
+    <!----//details-product-slider--->	
+    <!-- top scrolling -->
+    <script type="text/javascript" src="{{asset("js/move-top.js")}}"></script>
+    <script type="text/javascript" src="{{asset("js/easing.js")}}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(window).load(function() {
+            $("#flexiselDemo1").flexisel();
+            $("#flexiselDemo2").flexisel({
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+            $("#flexiselDemo3").flexisel({
+                visibleItems: 5,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+    <script type="text/javascript" src="{{asset("js/jquery.flexisel.js")}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+
+
+            $().UItoTop({easingType: 'easeOutQuart'});
+
+        });
+    </script>
 {% endblock %}
