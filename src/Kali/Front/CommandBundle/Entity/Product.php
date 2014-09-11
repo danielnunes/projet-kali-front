@@ -44,31 +44,31 @@ class Product
     private $price;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="lenght", type="integer")
+     * @ORM\Column(name="lenght", type="float")
      */
     private $lenght;
     
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="density", type="integer")
+     * @ORM\Column(name="density", type="float")
      */
     private $density;
     
     /**
      * @var integer
      *
-     * @ORM\Column(name="width", type="integer")
+     * @ORM\Column(name="width", type="float")
      */
     private $width;
    
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="weight", type="integer")
+     * @ORM\Column(name="weight", type="float")
      */
     private $weight;
 
@@ -107,129 +107,22 @@ class Product
         $this->pictures = new ArrayCollection();
     }
 
-    
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Product
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Product
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
-    /**
-     * Set weight
-     *
-     * @param integer $weight
-     * @return Product
-     */
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-
-        return $this;
-    }
-
-    /**
-     * Get weight
-     *
-     * @return integer 
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    /**
-     * Set stock
-     *
-     * @param integer $stock
-     * @return Product
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock
-     *
-     * @return integer 
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-    
     public function getPrice() {
         return $this->price;
     }
 
-    public function getCaracteristics() {
-        return $this->caracteristics;
-    }
-
-    public function setPrice($price) {
-        $this->price = $price;
-    }
-    
-    public function getPictures() {
-        return $this->pictures;
-    }
-
-    public function setPictures($pictures) {
-        $this->pictures = $pictures;
-    }
-    
     public function getLenght() {
         return $this->lenght;
     }
@@ -240,6 +133,46 @@ class Product
 
     public function getWidth() {
         return $this->width;
+    }
+
+    public function getWeight() {
+        return $this->weight;
+    }
+
+    public function getStock() {
+        return $this->stock;
+    }
+
+    public function getPictures() {
+        return $this->pictures;
+    }
+
+    public function getProductCommands() {
+        return $this->productCommands;
+    }
+
+    public function getCaracteristics() {
+        return $this->caracteristics;
+    }
+
+    public function getEcoParticipation() {
+        return $this->ecoParticipation;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
     }
 
     public function setLenght($lenght) {
@@ -254,19 +187,29 @@ class Product
         $this->width = $width;
     }
 
-    public function getEcoParticipation() {
-        return $this->ecoParticipation;
+    public function setWeight($weight) {
+        $this->weight = $weight;
     }
 
-    public function setEcoParticipation($ecoParticipation) {
-        $this->ecoParticipation = $ecoParticipation;
+    public function setStock($stock) {
+        $this->stock = $stock;
     }
-    public function getProductCommands() {
-        return $this->productCommands;
+
+    public function setPictures($pictures) {
+        $this->pictures = $pictures;
     }
 
     public function setProductCommands($productCommands) {
         $this->productCommands = $productCommands;
     }
+
+    public function setCaracteristics($caracteristics) {
+        $this->caracteristics = $caracteristics;
+    }
+
+    public function setEcoParticipation($ecoParticipation) {
+        $this->ecoParticipation = $ecoParticipation;
+    }
+
 
 }

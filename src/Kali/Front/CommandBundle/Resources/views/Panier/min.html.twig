@@ -1,0 +1,24 @@
+{% if panier|length > 0 %}
+<ul class="icon2 sub-icon2 profile_img">
+    <li>
+        <a class="active-icon c2" href="#"> </a>
+        <ul class="sub-icon2 list">
+            {%for element in panier %}
+            <li>
+                <h3>{{element['product'].name}}</h3>
+                <p>Quantité : {{element['quantity' ]}}</p>
+                <p>Prix : {{element['price']}}€</p>
+                <a href="{{path("panier_delete", {id : element['product'].id})}}">-1</a>
+                <a href="{{path("panier_add", {id : element['product'].id})}}">+1</a>
+            </li>
+            {% endfor %}
+            <li>
+                <p>
+                    Prix total : {{totalPanier}}€ <br/>
+                    <a href="{{path("panier_list")}}">Continuer la commande</a>
+                </p>
+            </li>
+        </ul>
+    </li>
+</ul>
+{% endif %}

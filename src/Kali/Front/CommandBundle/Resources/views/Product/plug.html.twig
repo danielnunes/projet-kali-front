@@ -6,7 +6,7 @@
     <link href="{{asset("css/megamenu.css")}}" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset("css/etalage.css")}}">   
 {% endblock %}
-{% block title %}Caracteristique de {{product.name}}{% endblock %}
+{% block title %}{{product.name}}{% endblock %}
 {% block body %}
     <div class="single">
         <div class="wrap">
@@ -42,8 +42,9 @@
                         <div class="clear"></div>
                     </ul>
                     <div class="btn_form">
-                        <form>
-                            <input type="submit" value="Acheter" title="">
+                        <form method="get" action="{{path("panier_add", {id : product.id})}}">
+                            <input type="hidden" value="{{product.id}}" name="id"/>
+                            <input type="submit" value="Ajouter au panier" title="">
                         </form>
                     </div>
                     <p class="m_desc">{{product.description}}</p>

@@ -114,14 +114,6 @@ class Slider {
         return $this->id;
     }
     
-    public function getPicture() {
-        return $this->picture;
-    }
-
-    public function setPicture(Picture $picture) {
-        $this->picture = $picture;
-    }
-    
     public function getPath() {
         return $this->path;
     }
