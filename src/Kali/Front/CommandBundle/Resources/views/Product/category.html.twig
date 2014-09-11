@@ -1,153 +1,40 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}Produits les plus vendus{% endblock %}
+{% block title %}Catégorie {{products[0].categories[0].name}}{% endblock %}
 
 {% block body %}
-    <!-- Start H1 Title -->
-    <div class="titlesnormal">
+    <div class="login">
+        <div class="wrap">
+            <div class="cont span_2_of_3">
+                <div class="box1">
+                    {% for product in products %}
+                        <div class="col_1_of_single1 span_1_of_single1"><a href="{{path("product_plug", {id : product.id})}}">
+                                {% if product.pictures[0] is defined %}
+                                    {% set path = site~product.pictures[0].path %} 
+                                {% else %}
+                                    {% set path = "" %}
+                                {% endif %}
+                                    <div class="view1 view-fifth1">
+                                        <div class="top_box">
+                                            <h3 class="m_1">{{product.name}}</h3>
+                                            <p class="m_2">{{product.description}}</p>
+                                            <div class="grid_img">
+                                                <div class="css3"><img src="{{path}}" alt=""/></div>
+                                                <div class="mask1">
+                                                    <div class="info">Voir la fiche produit</div>
+                                                </div>
+                                            </div>
+                                            <div class="price">{{product.price}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>  
+                            </div>
+                            {% endfor %}
 
-        <h1>Produits les plus populaires</h1>
-
-        <span></span>
-
-    </div>
-    <!-- End H1 Title -->
-    <!-- Start Main Body Wrap -->
-    <div id="main-wrap">
-        {% for product in products %}
-            <!-- Start Left Section -->
-            <div class="leftsection leftsectionalt">
-
-                <!-- Start Blog Post -->
-                <div class="blogwrapstart">
-
-                    <div class="blogtitle"><h3><a href="" title="5 ways to get top of google">{{product.name}}</a></h3></div>
-
-                    <div class="blogbody">
-                        <!-- Start Blog Image -->
-                        <div class="blogimage"><a href="blog-post.html"><img src="" alt="{{product.name}}"></a></div>
-                        <!-- End Blog Text -->
-                        <!-- Start Blog Information -->
-                        <div class="bloginfo">
-
-                            <p class="settingsicon">Prix: <span>{{product.price}}</span></p>
-                            <p class="tagicon">Quantité restante: <span>{{product.stock}}</span></p>
-
+                            </div>
                         </div>
-                        <!-- End Blog Information -->
-                        <!-- Start Blog Text -->
-                        <div class="blogtext">
-
-                            <p>Lorem ipsum dolor sit amet, consectetur elit. Maecenas non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.Lorem ipsum dolor sit amet, consectetur elit. Maecenas 
-                                non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur elit. Maecenas non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.Lorem ipsum dolor sit amet, consectetur elit. Maecenas 
-                                non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus. Lorem ipsum dolor sit amet, consectetur elit. Maecenas non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.Lorem ipsum dolor sit amet, consectetur elit. Maecenas 
-                                non ipsum nunc, nec sagittis tellus Maecenas non ipsum nunc, nec sagittis tellus.</p>
-
-                        </div>
-                        <!-- End Blog Text -->
+                        <div class="clear"></div>
                     </div>
-
-                    <span class="box-arrow"></span>
-
                 </div>
-
-            </div>
-
-        {% endfor %}
-
-        <!-- End Left Section -->
-
-        <!-- Start Right Section -->
-        <div class="rightsection rightsectionalt">
-
-            <!-- Start Blog Widget -->
-            <div class="blogwidgetstart">
-                <!-- Start Advertising Widget -->
-                <div class="widgettitle"><h4>Advertising</h4></div>
-
-                <div class="widgetbody">
-
-                    <div class="blogadvertising">
-
-                        <a href="#"><img src="images/advertising/themeadvertising.jpg"  alt="Themeforest"></a>
-                        <a href="#"><img src="images/advertising/audioadvertising.jpg" alt="Audiojungle"></a>
-                        <a href="#"><img src="images/advertising/graphicadvertising.jpg" alt="Grahpicrive"></a>
-                        <a href="#"><img src="images/advertising/tutorialadvertising.jpg" alt="Tutsplus"></a>
-
-                    </div>
-
-                </div>
-                <!-- End Advertising Widget -->
-                <span class="box-arrow"></span>
-
-            </div>
-            <!-- End Blog Widget -->
-
-            <!-- Start Blog Widget -->
-            <div class="blogwidget">
-                <!-- Start Categories Widget -->
-                <div class="widgettitle"><h4>Blog Categories</h4></div>
-
-                <div class="widgetbody">
-
-                    <div class="blogcategories">
-
-                        <ul>
-                            <li><a href="#" title="All Blogs">All Blogs</a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>                            
-                        </ul>
-
-                    </div>
-
-                </div>
-                <!-- End Categories Widget -->
-                <span class="box-arrow"></span>
-
-            </div>
-            <!-- End Blog Widget -->
-
-            <!-- Start Blog Widget -->
-            <div class="blogwidget">
-                <!-- Start Categories Widget -->
-                <div class="widgettitle"><h4>Top 5 Blog Posts</h4></div>
-
-                <div class="widgetbody">
-
-                    <div class="blogcategories">
-
-                        <ul>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum nunc</a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor </a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum </a></li>
-                            <li><a href="#" title="All Blogs">Lorem ipsum dolor sit</a></li>
-                            <li><a href="#" title="All Blogs">Maecenas non ipsum nunc</a></li>                        
-                        </ul>
-
-                    </div>
-
-                </div>
-                <!-- End Categories Widget -->
-                <span class="box-arrow"></span>
-
-            </div>
-            <!-- End Blog Widget -->
-
-        </div>
-        <!-- End Right Section -->
-
-    </div>
-    <!-- End Main Body Wrap -->
-{% endblock %}
+                {% endblock %}

@@ -32,12 +32,11 @@ class ProductController extends Controller
      * @Route("/categorie/{id}", name="product_category")
      * @Template()
      */
-    public function categoryAction()
+    public function categoryAction($id)
     {
         $browser = new Browser();
-        $response = $browser->get($this->container->getParameter("back_site") . 'feature/categorie');
+        $response = $browser->get($this->container->getParameter("back_site") . 'categories/' . $id . '/product');
         $products = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
-         
         return array(
             'products' => $products,
             'site' => $this->container->getParameter("back_site"),
