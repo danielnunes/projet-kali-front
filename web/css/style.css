@@ -1035,9 +1035,9 @@ ul.sub_list2 li a:hover{
     vertical-align: middle;
 }
 .c2 {
-    background: url(../images/img-sprite.png) no-repeat -350px -175px;
-    width: 42px;
-    height: 42px;
+    background: url(../images/cadi.png) no-repeat;
+    width: 96px;
+    height: 96px;
     display: inline-block;
     vertical-align: middle;
 }
