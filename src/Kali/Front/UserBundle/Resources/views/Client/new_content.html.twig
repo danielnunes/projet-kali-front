@@ -1,66 +1,67 @@
-<form action="http://back.kali.dev/api/create/user" {{ form_enctype(form) }} method="GET" class="fos_user_registration_register">
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="email">Email</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="email" id="username" name="email"  required="required" />
+<div class="login">
+    <div class="wrap">
+        <div class="login-title">
+            <h4 class="title">INSCRIPTION</h4>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="password">Mot de passe</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="tex" id="username" name="password"  required="required" />
+    <form action="http://back.kali.dev/api/create/user" {{ form_enctype(form) }} method="GET" class="fos_user_registration_register">
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="email">Email</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="email" id="username" name="email"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="firstName">Prénom</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="firstName"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="password">Mot de passe</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="tex" id="username" name="password"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="lastName">Nom</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="lastName"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="firstName">Prénom</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="firstName"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="address">Adresse</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="address"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="lastName">Nom</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="lastName"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="address">Adresse</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="address"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="address">Adresse</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="address"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="city">Ville</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="city"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="city">Ville</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="city"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="postalCode">Code postal</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="postalCode"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="postalCode">Code postal</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="postalCode"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="mobilePhone">Numéro de mobile</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="mobilePhone"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="mobilePhone">Numéro de mobile</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="mobilePhone"  required="required" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-xs-4 control-labell" for="phone">Téléphone</label>
-        <div class="col-sm-8">
-            <input class="form-control" type="text" id="username" name="phone"  required="required" />
+        <div class="form-group">
+            <label class="col-xs-4 control-labell" for="phone">Téléphone</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="username" name="phone"  required="required" />
+            </div>
         </div>
+
+       <p>
+            <input type="submit" value="Connexion">
+        </p>
+    </form>
     </div>
-    
-   <p>
-        <input type="submit" value="Connexion">
-    </p>
-</form>
+</div>
