@@ -107,6 +107,12 @@ class ClientController extends Controller {
     public function logoutAction() {
         $session = $this->container->get('session');
         $session->remove('client');
+        $session->remove('totalPanier');
+        $session->remove('lenghtPanier');
+        $session->remove('weightPanier');
+        $session->remove('total');
+        $session->remove('panier');
+        
         return $this->redirect($this->generateUrl("index_index"));
     }
 

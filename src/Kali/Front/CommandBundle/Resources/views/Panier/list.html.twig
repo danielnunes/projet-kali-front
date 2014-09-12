@@ -58,7 +58,7 @@
 
             <div class="wrap">
                 {% if client != "" %}
-                    <form action="" method="post">
+                    <form action="{{site}}api/finalises" method="post">
                         <input type="hidden" value="{{client.id}}" name="user"> 
                         <input type="hidden" value="{{sender.id}}" name="sender"> 
                         <input type="hidden" value="{{total}}" name="total"> 

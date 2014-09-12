@@ -18,8 +18,7 @@ class PanierController extends Controller {
      * @Template()
      */
     public function listAction() {
-        $session = new Session();
-        $session->start();
+        $session = $this->container->get("session");
         
         $panier = $session->get("panier");
         $totalPanier = $session->get("totalPanier");
@@ -28,7 +27,7 @@ class PanierController extends Controller {
         $client = $session->get("client");
         
         $browser = new Browser();
-        $response = $browser->get($this->container->getParameter("back_site") . 'api/senders/' . $lenghtPanier . '/weights/' . $weightPanier);
+        $response = $browser->get($this->container->getParameter("back_site") . 'api/senders/' . urlencode($lenghtPanier) . '/weights/' . urlencode($weightPanier));
         $sender = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\CommandBundle\Entity\Sender', 'json');
 
         $total = $totalPanier + $sender->getPrice();
@@ -43,6 +42,7 @@ class PanierController extends Controller {
             'totalPanier' => $totalPanier,
             'client' => $client,
             'sendPanier' => $sendPanier,
+            'site' => $this->container->getParameter("back_site"),
         );
     }
 
@@ -58,8 +58,7 @@ class PanierController extends Controller {
         $dimension = array($product->getLenght(), $product->getDensity(), $product->getWidth());
         $lenghtProduct = max($dimension);
 
-        $session = new Session();
-        $session->start();
+        $session = $this->container->get("session");
         $panier = $session->get("panier");
         $total = $session->get("totalPanier");
         $lenghtPanier = $session->get("lenghtPanier");
@@ -120,8 +119,7 @@ class PanierController extends Controller {
         $dimension = array($product->getLenght(), $product->getDensity(), $product->getWidth());
         $lenghtProduct = max($dimension);
 
-        $session = new Session();
-        $session->start();
+        $session = $this->container->get("session");
         $panier = $session->get("panier");
         $total = $session->get("totalPanier");
         $lenghtPanier = $session->get("lenghtPanier");
@@ -157,7 +155,7 @@ class PanierController extends Controller {
      * @Template()
      */
     public function minAction() {
-        $session = new Session();
+        $session = $this->container->get("session");
         if (!$session->isStarted())
             $session->start();
         $panier = $session->get("panier");
@@ -174,7 +172,7 @@ class PanierController extends Controller {
      */
     public function valideAction() {
         
-        $session = new Session();
+        $session = $this->container->get("session");
         $session->start();
         
         $session->remove("panier");
