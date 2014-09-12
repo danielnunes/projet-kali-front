@@ -1,40 +1,80 @@
 {% extends "::layout.html.twig" %}
 {% block title %}Panier{% endblock %}
 {% block body %}
-    <div class="login">
-        <h3>Détail de votre panier</h3>
+    <div class="register_account">
+
+        <h4 class="title">Panier</h4>
+
+
         {% if panier|length > 0 %}
             {% for element in panier %}
                 <div class="wrap">
-                    <h4>{{element['product'].name}}</h4>
-                    <p>Quantité : {{element['quantity' ]}}</p>
-                    <p>Prix : {{element['price']}}€</p>
-                    <a href="{{path("panier_delete", {id : element['product'].id})}}">-1</a>
-                    <a href="{{path("panier_add", {id : element['product'].id})}}">+1</a>
+                    <div class="col_1_of_2 span_1_of_2">
+                        <h4>{{element['product'].name}}</h4>
+                        <p>Quantité : {{element['quantity' ]}}</p>
+                        <a href="{{path("panier_delete", {id : element['product'].id})}}">-1</a>
+                        <a href="{{path("panier_add", {id : element['product'].id})}}">+1</a>
+                    </div>
+                    <div class="col_1_of_2 span_1_of_2">
+
+                        <p>Prix : {{element['price']}}€</p>
+                    </div>
                 </div>
+                <div class="clear"></div>
             {% endfor %}
             <div class="wrap">
-                <p>
-                    Prix total des produits: {{totalPanier}}€ <br/>
-                </p>
+                <div class="col_1_of_2 span_1_of_2">
+                    <p>
+                        Prix total des produits:<br/>
+                    </p>
+                </div>
+                <div class="col_1_of_2 span_1_of_2">
+                    {{totalPanier}}€ 
+                </div>
             </div>
+            <div class="clear"></div>
             <div class="wrap">
-                <h4>Transporteur</h4>
-                <p>
-                    {{sender.name}} : {{sender.price}}€ <br/>
-                </p>
+                <div class="col_1_of_2 span_1_of_2">
+                    <p>
+                        Transporteur : {{sender.name}}<br/>
+                    </p>
+                </div>
+                <div class="col_1_of_2 span_1_of_2">
+                    {{sender.price}}€
+                </div>
             </div>
+            <div class="clear"></div>
             <div class="wrap">
-                <p>
-                    Prix total de la commande: {{total}}€ <br/>
-                    <a href="{{path("panier_list")}}">Commander et payer</a>
-                </p>
+                <div class="col_1_of_2 span_1_of_2">
+                    <p>
+                        Prix total de la commande:<br/>
+                    </p>
+                </div>
+                <div class="col_1_of_2 span_1_of_2">
+                    {{total}}€
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="wrap">
+                {% if client != "" %}
+                    <form action="" method="post">
+                        <input type="hidden" value="{{client.id}}" name="user"> 
+                        <input type="hidden" value="{{sender.id}}" name="sender"> 
+                        <input type="hidden" value="{{total}}" name="total"> 
+                        <input type="hidden" value="{{sendPanier}}" name="panier"> 
+                        <input class="grey" type="submit" value="Acheter">
+                    </form>
+                {% else %}
+                    <a href="{{path("client_login")}}">Connecter vous pour payer</a>
+                {% endif %}
             </div>
         {% else %}
             <div class="wrap">
                 <h4 class="title">Panier vide</h4>
                 <p class="cart">Votre panier est vide.<br>Ciquer<a href="{{path("index_index")}}"> ici</a> pour acheter</p>
             </div>
-        </div>
         {% endif %}
+
+    </div>
 {% endblock %}

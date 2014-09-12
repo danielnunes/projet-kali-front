@@ -20,22 +20,29 @@ class PanierController extends Controller {
     public function listAction() {
         $session = new Session();
         $session->start();
+        
         $panier = $session->get("panier");
         $totalPanier = $session->get("totalPanier");
         $lenghtPanier = $session->get("lenghtPanier");
         $weightPanier = $session->get("weightPanier");
+        $client = $session->get("client");
+        
         $browser = new Browser();
         $response = $browser->get($this->container->getParameter("back_site") . 'api/senders/' . $lenghtPanier . '/weights/' . $weightPanier);
         $sender = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\CommandBundle\Entity\Sender', 'json');
 
         $total = $totalPanier + $sender->getPrice();
         $session->set("total", $total);
+        
+        $sendPanier = serialize($panier);
 
         return array(
             'panier' => $panier,
             'total' => $total,
             'sender' => $sender,
-            'totalPanier' => $totalPanier
+            'totalPanier' => $totalPanier,
+            'client' => $client,
+            'sendPanier' => $sendPanier,
         );
     }
 
@@ -160,5 +167,20 @@ class PanierController extends Controller {
             'totalPanier' => $total,
         );
     }
-
+    
+    /**
+     * @Route("/command/valide", name="panier_valide")
+     * @Template()
+     */
+    public function valideAction() {
+        
+        $session = new Session();
+        $session->start();
+        
+        $session->remove("panier");
+        $session->remove("totalPanier");
+        $session->remove("lenghtPanier");
+        $session->remove("weightPanier");
+        return array();
+    }
 }
