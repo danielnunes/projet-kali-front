@@ -19,14 +19,20 @@
                 </div>
                 <div class="cssmenu">
                     <ul>
-                        <li><a href="{{path("client_signin")}}">Inscription</a></li> 
-                        <li><a href="{{path("client_plug")}}">Mon compte</a></li> 
-                        <li><a href="{{path("client_login")}}">Connexion</a></li>
-                        <li><a href="{{path("client_logout")}}">Déconnexion</a></li> 
+                        
+                        {% if app.session.has('client') and app.session.get('client') is not null %} <li>
+                            {% set client = app.session.get('client') %}
+                            <li><a href="{{path("client_plug", {'id': client.id , 'mess_bool': 0})}}">Mon compte</a></li> 
+                            <li><a href="{{path("client_logout")}}">Déconnexion</a></li>  
+                        {% else %}
+                            <a href="{{path("client_signin")}}">Inscription</a>
+                            <li><a href="{{path("client_login", {'mess' :1})}}">Connexion</a></li>
+                        {% endif %}
+                        
                     </ul>
                 </div>
                 {% if app.request.attributes.get('_route') != "panier_list" %}
-                    {% render "KaliFrontCommandBundle:/panier/min" %}
+{#                    {% render "KaliFrontCommandBundle:/panier/min" %}#}
                 {% endif %}
                 <div class="clear"></div>
             </div>
