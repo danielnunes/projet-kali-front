@@ -24,13 +24,31 @@ class IndexController extends Controller {
     }
 
     /**
-     * @Route("/presentation", name="presentation")
+     * @Route("/presentation", name="site_presentation")
      * @Template()
      */
     public function presentationAction() {
-
+        $browser = new Browser();
+        $response = $browser->get($this->container->getParameter("back_site") . 'api/parameters');
+        $sliders = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\SiteBundle\Entity\Parameter', 'json');
         return array(
-
+            'sliders' => $sliders,
+            'site' => $this->container->getParameter("back_site"),
         );
     }
+    /**
+     * @Route("/slogan", name="site_slogan")
+     * @Template()
+     */
+    
+    public function sloganAction() {
+        $browser = new Browser();
+        $response = $browser->get($this->container->getParameter("back_site") . 'api/parameters');
+        $paramater = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\SiteBundle\Entity\Parameter', 'json');
+        return array(
+            'slogan' => $paramater->getSlogan(),
+            'site' => $this->container->getParameter("back_site"),
+        );
+    }
+
 }

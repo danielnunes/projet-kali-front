@@ -1,10 +1,40 @@
 {% extends "::layout.html.twig" %}
 {% block title %}Panier{% endblock %}
 {% block body %}
-<div class="login">
-    <div class="wrap">
-        <h4 class="title">Shopping cart is empty</h4>
-        <p class="cart">You have no items in your shopping cart.<br>Click<a href="index.html"> here</a> to continue shopping</p>
-    </div>
-</div>
+    <div class="login">
+        <h3>Détail de votre panier</h3>
+        {% if panier|length > 0 %}
+            {% for element in panier %}
+                <div class="wrap">
+                    <h4>{{element['product'].name}}</h4>
+                    <p>Quantité : {{element['quantity' ]}}</p>
+                    <p>Prix : {{element['price']}}€</p>
+                    <a href="{{path("panier_delete", {id : element['product'].id})}}">-1</a>
+                    <a href="{{path("panier_add", {id : element['product'].id})}}">+1</a>
+                </div>
+            {% endfor %}
+            <div class="wrap">
+                <p>
+                    Prix total des produits: {{totalPanier}}€ <br/>
+                </p>
+            </div>
+            <div class="wrap">
+                <h4>Transporteur</h4>
+                <p>
+                    {{sender.name}} : {{sender.price}}€ <br/>
+                </p>
+            </div>
+            <div class="wrap">
+                <p>
+                    Prix total de la commande: {{total}}€ <br/>
+                    <a href="{{path("panier_list")}}">Commander et payer</a>
+                </p>
+            </div>
+        {% else %}
+            <div class="wrap">
+                <h4 class="title">Panier vide</h4>
+                <p class="cart">Votre panier est vide.<br>Ciquer<a href="{{path("index_index")}}"> ici</a> pour acheter</p>
+            </div>
+        </div>
+        {% endif %}
 {% endblock %}

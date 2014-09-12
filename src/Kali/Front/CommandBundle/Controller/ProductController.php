@@ -35,8 +35,9 @@ class ProductController extends Controller
     public function categoryAction($id)
     {
         $browser = new Browser();
-        $response = $browser->get($this->container->getParameter("back_site") . 'categories/' . $id . '/product');
+        $response = $browser->get($this->container->getParameter("back_site") . 'api/categories/' . $id . '/product');
         $products = $this->get('jms_serializer')->deserialize($response->getContent(), 'Doctrine\Common\Collections\ArrayCollection', 'json');
+        
         return array(
             'products' => $products,
             'site' => $this->container->getParameter("back_site"),

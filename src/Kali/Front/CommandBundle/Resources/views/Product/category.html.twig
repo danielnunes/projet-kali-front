@@ -1,6 +1,6 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}Catégorie {{products[0].categories[0].name}}{% endblock %}
+{% block title %}Catégorie{% endblock %}
 
 {% block body %}
     <div class="login">
@@ -14,27 +14,33 @@
                                 {% else %}
                                     {% set path = "" %}
                                 {% endif %}
-                                    <div class="view1 view-fifth1">
-                                        <div class="top_box">
-                                            <h3 class="m_1">{{product.name}}</h3>
-                                            <p class="m_2">{{product.description}}</p>
-                                            <div class="grid_img">
-                                                <div class="css3"><img src="{{path}}" alt=""/></div>
-                                                <div class="mask1">
-                                                    <div class="info">Voir la fiche produit</div>
-                                                </div>
+                                <div class="view1 view-fifth1">
+                                    <div class="top_box">
+                                        <h3 class="m_1">{{product.name}}</h3>
+                                        <p class="m_2">{{product.description}}</p>
+                                        <div class="grid_img">
+                                            <div class="css3"><img src="{{path}}" alt=""/></div>
+                                            <div class="mask1">
+                                                <div class="info">Voir la fiche produit</div>
                                             </div>
-                                            <div class="price">{{product.price}}</div>
                                         </div>
+                                        <div class="price">{{product.price}}</div>
                                     </div>
-                                    <div class="clear"></div>
-                                </a>  
-                            </div>
-                            {% endfor %}
-
+                                </div>
+                                <div class="clear"></div>
+                            </a>  
+                        </div>
+                    {% endfor %}
+                    {% if products|length == 0 %}
+                        <div class="view1 view-fifth1">
+                            <div class="top_box">
+                                <p> Aucun produit ne correspond à cette catégorie</p>
                             </div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
+                    {% endif %}
                 </div>
-                {% endblock %}
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+{% endblock %}
