@@ -33,6 +33,8 @@ class PanierController extends Controller {
 
         $total = $totalPanier + $sender->getPrice();
         $session->set("total", $total);
+        
+        $sendPanier = serialize($panier);
 
         return array(
             'panier' => $panier,
@@ -40,6 +42,7 @@ class PanierController extends Controller {
             'sender' => $sender,
             'totalPanier' => $totalPanier,
             'client' => $client,
+            'sendPanier' => $sendPanier,
         );
     }
 
@@ -163,5 +166,21 @@ class PanierController extends Controller {
             'panier' => $panier,
             'totalPanier' => $total,
         );
+    }
+    
+    /**
+     * @Route("/command/valide", name="panier_valide")
+     * @Template()
+     */
+    public function valideAction() {
+        
+        $session = new Session();
+        $session->start();
+        
+        $session->remove("panier");
+        $session->remove("totalPanier");
+        $session->remove("lenghtPanier");
+        $session->remove("weightPanier");
+        return array();
     }
 }
