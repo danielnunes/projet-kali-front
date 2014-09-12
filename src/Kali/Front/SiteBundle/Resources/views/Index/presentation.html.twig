@@ -1,0 +1,48 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Présentation{% endblock %}
+
+{% block body %}
+
+    <div class="login">
+        <div class="wrap">
+            <div class="col_1_of_login span_1_of_login">
+                <h4 class="title">Présentation de la société</h4>
+                <p> Studio Vitamine est une agence web créée en 2008 et basée à La Rochelle et Paris. Nous concevons et développons votre site web sur mesure, doté de la bonne stratégie marketing. Après le lancement de votre projet, nous suivons de près les performances de votre site et vous proposons de nouvelles idées pour aller toujours plus loin. Déjà plus de 200 clients nous font confiance, des grands comptes aux PME en passant par des porteurs de projets. Nos objectifs : vous faire gagner plus de clients, plus de ventes, plus de chiffre d’affaire.</p>
+
+                <div class="clear"></div>
+            </div>
+            <div class="col_1_of_login span_1_of_login">
+                <div class="login-title">
+                    <h4 class="title">Contact</h4>
+                    <div class="comments-area">
+                        <p>Où nous rencontrer ? </p>
+                        <p>18 rue Yves Toudic 75010 Paris </p>
+                        <input id="address" type="text" placeholder="Tapez notre adresse">
+                        <div id="map" style="height:200px"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src={{asset("js/dist/typeahead.js")}}></script>
+    <script src={{asset("js/dist/typeahead-addresspicker.js")}}></script>
+    <script type="text/javascript">
+    // instantiate the addressPicker suggestion engine (based on bloodhound)
+        var addressPicker = new AddressPicker({map: {id: '#map'}});
+
+        // instantiate the typeahead UI
+        $('#address').typeahead(null, {
+            displayKey: 'description',
+            source: addressPicker.ttAdapter()
+        });
+
+        // Bind some event to update map on autocomplete selection
+        $('#address').bind("typeahead:selected", addressPicker.updateMap);
+        $('#address').bind("typeahead:cursorchanged", addressPicker.updateMap);
+    </script>
+{% endblock %}
