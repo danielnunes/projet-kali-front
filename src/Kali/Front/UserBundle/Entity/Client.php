@@ -1,10 +1,9 @@
 <?php
 
-namespace Kali\Back\UserBundle\Entity;
+namespace Kali\Front\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Kali\Back\ProductBundle\Entity\Command;
 
 /**
  * @ORM\Entity
@@ -100,12 +99,7 @@ class Client
      */
     private $mobilePhone;
 
-    /**
-     * @var array
-     *
-     * @ORM\OneToMany(targetEntity="Kali\Back\ProductBundle\Entity\Command", mappedBy="user")
-     */
-    private $commands;
+
     
     /**
      * @var integer
@@ -121,17 +115,7 @@ class Client
      * @ORM\Column(name="password", type="string", nullable = true)
      */
     private $password;
-    
-    
 
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commands = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -396,38 +380,6 @@ class Client
         return $this->mobilePhone;
     }
 
-    /**
-     * Add commands
-     *
-     * @param Command $commands
-     * @return User
-     */
-    public function addCommand(Command $commands)
-    {
-        $this->commands[] = $commands;
-
-        return $this;
-    }
-
-    /**
-     * Remove commands
-     *
-     * @param Command $commands
-     */
-    public function removeCommand(Command $commands)
-    {
-        $this->commands->removeElement($commands);
-    }
-
-    /**
-     * Get commands
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommands()
-    {
-        return $this->commands;
-    }
 
     /**
      * Set user

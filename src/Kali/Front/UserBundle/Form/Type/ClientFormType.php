@@ -1,6 +1,6 @@
 <?php
 
-namespace Kali\Back\UserBundle\Form\Type;
+namespace Kali\Front\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
@@ -51,6 +51,6 @@ class ClientFormType extends AbstractType
 
     public function getName()
     {
-        return 'kali_back_client';
+        return 'kali_front_client';
     }
 }

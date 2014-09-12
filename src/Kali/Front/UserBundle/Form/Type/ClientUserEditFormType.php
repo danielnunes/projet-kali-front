@@ -1,6 +1,6 @@
 <?php
 
-namespace Kali\Back\UserBundle\Form\Type;
+namespace Kali\Front\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -32,6 +32,6 @@ class ClientUserEditFormType extends AbstractType
 
     public function getName()
     {
-        return 'kali_back_client_user_edit';
+        return 'kali_front_client_user_edit';
     }
 }

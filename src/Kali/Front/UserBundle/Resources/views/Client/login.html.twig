@@ -5,37 +5,28 @@
 {% block body %}
     <div class="login">
         <div class="wrap">
-            <div class="col_1_of_login span_1_of_login">
-                <h4 class="title">Inscrivez-vous</h4>
-                <h5 class="sub_title">Vous pouvez utiliser votre identifiant pour d’autres services tels que<br>
-                    - Produits phares<br>
-                    - Gestion des stocks<br>
-                    - Gérer vos clients
-                </h5>
-                <p>Créez votre identifiant et mot de passe</p>
-                <div class="button1">
-                    <a href="register.html"><input type="submit" name="Submit" value="Continuez"></a>
-                </div>
-                <div class="clear"></div>
-            </div>
+
             <div class="col_1_of_login span_1_of_login">
                 <div class="login-title">
                     <h4 class="title">Clients déjà inscrits</h4>
+                    {{message}}
                     <div class="comments-area">
-                        <form>
-                            <p>
-                                <label>Identifiant</label>
-                                <span>*</span>
-                                <input type="text" value="">
-                            </p>
-                            <p>
-                                <label>Mot de passe</label>
-                                <span>*</span>
-                                <input type="password" value="">
-                            </p>
-                            <p id="login-form-remember">
-                                <label><a href="#">Identifiant ou mot de passe oublié ? </a></label>
-                            </p>
+                        <form action="http://back.kali.dev/api/getlogin"  method="GET" class="fos_user_registration_register">
+
+                                <div class="form-group">
+                                    <label class="col-xs-4 control-labell" for="username">Email</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="email" id="username" name="_username"  required="required" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-4 control-labell" for="password">Mot de passe</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="password" id="password" name="_password" required="required" />
+                                    </div>
+                                </div>
+
                             <p>
                                 <input type="submit" value="Connexion">
                             </p>

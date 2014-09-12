@@ -1,0 +1,16 @@
+<form action="http://back.kali.dev/api/update/user" method="GET" class="fos_user_registration_register">
+    {#Email<input type ="email" name ="email" value = "{{client.user.email}}"/>#}
+    <input type ="hidden" name = "id" value ="{{client.id}}"
+    Prénom<input type ="text" name ="firstName" value = "{{client.firstName}}"/>
+    Nom<input type ="text" name ="lastName" value = "{{client.lastName}}"/>
+    Adresse<input type ="text" name ="address" value = "{{client.address}}"/>
+    Ville<input type ="text" name ="city" value = "{{client.city}}"/>
+    Code postale<input type ="text" name ="postalCode" value = "{{client.postalCode}}"/>
+    mobile <input type ="text" name ="mobilePhone" value = "{{client.mobilePhone}}"/>
+    Téléphone<input type ="text" name ="phone" value = "{{client.phone}}"/>
+    
+    <div>
+        <input type="submit" value="Enregistrer" />
+    </div>
+
+</form>
