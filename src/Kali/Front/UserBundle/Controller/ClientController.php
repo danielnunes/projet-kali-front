@@ -105,9 +105,9 @@ class ClientController extends Controller {
      * @Template()
      */
     public function logoutAction() {
-        return array(
-                
-        );
+        $session = $this->container->get('session');
+        $session->remove('client');
+        return $this->redirect($this->generateUrl("index_index"));
     }
 
 }
