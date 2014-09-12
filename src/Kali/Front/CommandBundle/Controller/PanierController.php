@@ -20,10 +20,13 @@ class PanierController extends Controller {
     public function listAction() {
         $session = new Session();
         $session->start();
+        
         $panier = $session->get("panier");
         $totalPanier = $session->get("totalPanier");
         $lenghtPanier = $session->get("lenghtPanier");
         $weightPanier = $session->get("weightPanier");
+        $client = $session->get("client");
+        
         $browser = new Browser();
         $response = $browser->get($this->container->getParameter("back_site") . 'api/senders/' . $lenghtPanier . '/weights/' . $weightPanier);
         $sender = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\CommandBundle\Entity\Sender', 'json');
@@ -35,7 +38,8 @@ class PanierController extends Controller {
             'panier' => $panier,
             'total' => $total,
             'sender' => $sender,
-            'totalPanier' => $totalPanier
+            'totalPanier' => $totalPanier,
+            'client' => $client,
         );
     }
 
@@ -160,5 +164,4 @@ class PanierController extends Controller {
             'totalPanier' => $total,
         );
     }
-
 }

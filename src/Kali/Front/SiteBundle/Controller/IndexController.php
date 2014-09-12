@@ -30,10 +30,9 @@ class IndexController extends Controller {
     public function presentationAction() {
         $browser = new Browser();
         $response = $browser->get($this->container->getParameter("back_site") . 'api/parameters');
-        $sliders = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\SiteBundle\Entity\Parameter', 'json');
+        $parameter = $this->get('jms_serializer')->deserialize($response->getContent(), 'Kali\Front\SiteBundle\Entity\Parameter', 'json');
         return array(
-            'sliders' => $sliders,
-            'site' => $this->container->getParameter("back_site"),
+            'parameter' => $parameter,
         );
     }
     /**
